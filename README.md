@@ -1,80 +1,153 @@
+# DesignHIve Learning Platform
 
-Built by https://www.blackbox.ai
-
----
-
-# DesignHIve
-
-DesignHIve is an interactive learning platform focused on graphic design education aimed at students from SMK Negeri 3 Bantul. This project offers an engaging learning experience with interactive materials, educational mini-games, and certifications upon course completion.
-
-## Project Overview
-
-DesignHIve provides a comprehensive solution for students to enhance their graphic design skills through dynamic content that simplifies the learning process. It features modern UI/UX designs that make studying more enjoyable and effective.
+DesignHIve is a comprehensive e-learning platform for graphic design education, featuring role-based access, interactive learning materials, assignments, quizzes, and a gamification system.
 
 ## Installation
 
-To set up the project on your local machine, follow these steps:
+1. Create MySQL database:
+```sql
+CREATE DATABASE designhive;
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/designhive.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd designhive
-   ```
-3. **Set up a Local Server:**
-   - You can use a local server such as XAMPP, MAMP, or WAMP. Place the `designhive` folder in the `htdocs` directory (for XAMPP).
-   
-4. **Access the project in your web browser:**
-   - Open a web browser and go to `http://localhost/designhive/index.php` (or your local server URL).
+2. Import the database:
+```bash
+mysql -u your_username -p designhive < database/designhive.sql
+```
 
-## Usage
+3. Set up the project in your web server:
+```bash
+# Create debug directory in your web root
+mkdir /var/www/html/debug
 
-- **To log in:** Navigate to the Login page (`login.php`) and enter your credentials.
-- **To register:** Go to the Registration page (`register.php`) and fill out the form to create a new account.
-- **Access Learning Materials:** After logging in, students can explore various educational materials and mini-games designed to enhance their learning experience.
+# Copy project files
+cp -r * /var/www/html/debug/
+```
 
-## Features
-
-- **Interactive Materials:** Engaging content that includes text, images, and videos.
-- **Educational Mini Games:** Fun and interactive games that reinforce learning concepts.
-- **Digital Certification:** Users can earn a certificate upon completion of their courses.
-- **User-Friendly Interface:** Easy navigation with a responsive design suitable for all devices.
-
-## Dependencies
-
-This project utilizes the following dependencies:
-
-- [Tailwind CSS](https://tailwindcss.com/) for styling the components.
-- [Font Awesome](https://fontawesome.com/) for icons used throughout the application.
-
-These dependencies are linked directly in the HTML files and do not require installation through npm or any other package manager.
-
-## Project Structure
-
-The project contains the following file structure:
+## Directory Structure
 
 ```
-designhive/
-│
-├── index.php         # Main landing page of the application
-├── login.php         # Login page for users
-├── register.php      # Registration page for new users
-└── includes/
-    └── auth/
-        ├── login_process.php    # Script to handle login process
-        └── register_process.php  # Script to handle registration process
+debug/
+├── admin/                 # Admin interface
+├── teacher/              # Teacher interface
+├── student/              # Student interface
+├── includes/             # Shared components
+├── config/              # Configuration files
+├── database/            # Database files
+└── assets/             # Static resources
 ```
+
+## Test Accounts
+
+All accounts use the same password: `password123`
+
+```
+Role: Administrator
+Username: admin
+Email: admin@designhive.com
+Access: /debug/admin/dashboard.php
+
+Role: Teacher
+Username: teacher
+Email: teacher@designhive.com
+Access: /debug/teacher/dashboard.php
+
+Role: Student
+NIS: 2024001
+Email: student1@designhive.com
+Access: /debug/student/dashboard.php
+
+Role: Student
+NIS: 2024002
+Email: student2@designhive.com
+Access: /debug/student/dashboard.php
+```
+
+## Features by Role
+
+### Admin Features (/debug/admin/*)
+- User management
+- Learning material management (CRUD)
+- Platform statistics monitoring
+- System configuration
+
+### Teacher Features (/debug/teacher/*)
+- Grade student submissions
+- Provide feedback
+- Monitor student progress
+- Access learning materials
+
+### Student Features (/debug/student/*)
+- Access learning materials:
+  * Text & image content
+  * Video tutorials
+  * Interactive minigames
+- Submit assignments
+- Take chapter quizzes
+- Take final exam
+- Earn points and badges
+- Track learning progress
+- Download completion certificate
+
+## Technologies Used
+
+- PHP 7.4+
+- MySQL 5.7+
+- Tailwind CSS
+- Font Awesome Icons
+- Google Fonts
+- TinyMCE Editor
+- jQuery & jQuery UI
+
+## Development Setup
+
+1. Clone the repository into debug directory
+2. Create database and import designhive.sql
+3. Configure database connection in config/config.php
+4. Access the platform through: http://your-domain/debug/
+
+## Testing Workflow
+
+1. Access login page: http://your-domain/debug/login.php
+
+2. For Admin/Teacher:
+   - Click "Admin & Guru" button
+   - Login with username/password
+   - Admin: admin/password123
+   - Teacher: teacher/password123
+
+3. For Students:
+   - Click "Siswa" button
+   - Login with NIS/password
+   - Example: 2024001/password123
+
+## Production Deployment
+
+Before deploying to production:
+
+1. Change all default passwords
+2. Update database credentials
+3. Enable HTTPS
+4. Configure proper file permissions
+5. Set up backup system
+6. Enable error logging
+7. Optimize for performance
+
+## Security Considerations
+
+- All passwords are hashed using bcrypt
+- SQL injection prevention through prepared statements
+- XSS protection implemented
+- CSRF tokens used for forms
+- File upload validation
+- Role-based access control
+
+## Support
+
+For issues and questions:
+1. Check the documentation
+2. Review error logs
+3. Contact system administrator
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-If you'd like to contribute to this project, please fork the repository and submit a pull request. 
-
-## Acknowledgments
-
-Thank you for visiting the DesignHIve project. We hope it helps in your graphic design education journey!
+Copyright © 2024 DesignHIve Learning Platform. All rights reserved.
