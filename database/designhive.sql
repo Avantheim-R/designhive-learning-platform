@@ -1,5 +1,13 @@
--- DesignHIve Learning Platform Database
+-- Create and select database
+DROP DATABASE IF EXISTS designhive;
+CREATE DATABASE designhive;
+USE designhive;
 
+-- Set character set
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- DesignHIve Learning Platform Database
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -153,4 +161,5 @@ INSERT INTO gamification (user_id, points, badges) VALUES
 (3, 0, '[]'),
 (4, 0, '[]');
 
+SET FOREIGN_KEY_CHECKS = 1;
 COMMIT;
