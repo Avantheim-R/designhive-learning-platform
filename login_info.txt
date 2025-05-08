@@ -1,0 +1,75 @@
+====================================
+DESIGNHIVE LEARNING PLATFORM - LOGIN INFO
+====================================
+
+ADMIN LOGIN
+----------
+Username: admin
+Password: password123
+Email: admin@designhive.com
+Role: Administrator
+
+TEACHER LOGIN
+------------
+Username: teacher
+Password: password123
+Email: teacher@designhive.com
+Role: Teacher
+
+STUDENT LOGINS
+-------------
+Student 1:
+Username: student1
+Password: password123
+Email: student1@designhive.com
+NIS: 2024001
+Role: Student
+
+Student 2:
+Username: student2
+Password: password123
+Email: student2@designhive.com
+NIS: 2024002
+Role: Student
+
+====================================
+ACCESS LEVELS
+====================================
+
+ADMIN:
+- Manage all users
+- Manage learning materials
+- Monitor platform statistics
+- Full system administration
+
+TEACHER:
+- Grade student submissions
+- Provide feedback
+- Monitor student progress
+- View learning materials
+
+STUDENT:
+- Access learning materials
+- Submit assignments
+- Take quizzes and exams
+- Earn points and badges
+- View progress
+- Participate in discussions
+
+====================================
+TESTING STEPS
+====================================
+
+1. Import database files in order:
+   - First import: schema.sql
+   - Then import: test_data.sql
+
+2. Access the platform at your local URL
+
+3. Use any of the above credentials to test
+   different user roles and features
+
+4. All accounts use the same password
+   (password123) for easy testing
+
+====================================
